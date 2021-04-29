@@ -4,6 +4,6 @@ services:
     image: node:15.14.0-slim
     container_name: node-express-jwt
     working_dir: /home/node/workspace
-    tty: true
+    command: sh -c "su - node && cd /home/node/workspace && npm run dev"
     volumes:
       - ./src:/home/node/workspace

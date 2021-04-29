@@ -3,12 +3,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var helmet = require('helmet');
+var cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
 
+app.use(cors({origin: process.env.CORS_ORIGIN || 'http://localhost'}));
 app.use(helmet());
 app.use(logger('dev'));
 app.use(express.json());

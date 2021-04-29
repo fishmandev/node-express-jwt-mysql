@@ -9,7 +9,7 @@ router.post('/', (req, res, next) => {
 
   userModel.getUserByField('email', email).then(user => {
     if (!user || password !== user.password)
-      return res.status(401).json({ erorr: 'Invalid user email or password ' });
+      return res.status(401).json({ erorr: 'Invalid user email or password' });
 
     let token = jwt.sign({ id: user.id }, process.env.JWT_TOKEN_SECRET, {
       expiresIn: 86400 // expires in 24 hours

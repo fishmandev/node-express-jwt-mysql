@@ -4,6 +4,7 @@ var helmet = require('helmet');
 var cors = require('cors');
 
 var indexRouter = require('./routes/index');
+var loginRouter = require('./routes/login');
 
 var app = express();
 
@@ -14,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use('/', indexRouter);
+app.use('/login', loginRouter);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);

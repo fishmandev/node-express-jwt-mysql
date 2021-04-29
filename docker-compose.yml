@@ -7,3 +7,11 @@ services:
     command: sh -c "su - node && cd /home/node/workspace && npm run dev"
     volumes:
       - ./src:/home/node/workspace
+    depends_on:
+      - db
+  db:
+    image: mysql:8.0.24
+    container_name: node-express-jwt-db
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: root
